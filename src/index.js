@@ -1,17 +1,43 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { StrictMode } from 'react';
+import ReactDOMClient from 'react-dom/client';
+import { ThemeProvider } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
+import Main from './Main';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const theme = {
+	colors: {
+		background: '#F7E2E2',
+		primary: '#61A4BC',
+		secondary: '#5B7DB1',
+	},
+	breakpoints: {
+		mobile: '480px',
+		tablet: '768px',
+		laptop: '1024px',
+		desktop: '1200px',
+	},
+};
+
+const GlobalStyle = createGlobalStyle`
+	body {
+		font-family: 'Nunito', sans-serif;
+		background-color: ${(props) => props.theme.colors.background};
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+`;
+
+const container = document.getElementById('root');
+const rootClient = ReactDOMClient.createRoot(container);
+rootClient.render(
+	<StrictMode>
+		<ThemeProvider theme={theme}>
+			<GlobalStyle />
+			<Main />
+		</ThemeProvider>
+	</StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
