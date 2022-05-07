@@ -1,6 +1,9 @@
 # hextocolor
 A website that gives the name of color within given hex code.
 
+Credits for gradient generator function to Pimp Trizkit, for this amazing solution on StackOverflow:
+https://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors/13542669#13542669
+
 ## Available Scripts
 
 In the project directory, you can run:
